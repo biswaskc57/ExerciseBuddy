@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>exercise buddy</title>
+<meta http-equiv="Content-Type" content="text/html;
+charset=UTF-8" />
+</head>
+<body>
+<h2>List of books:</h2>
+<table>
+	<tr th:each="message : ${messages}">
+<td th:text="${message.id}">1</td>
+<td><a href="#" th:text="${message.name}">Title ...</a></td>
+<td th:text="${message.type}">Text ...</td>
+</tr>
+</table>
+</body>
+</html>
