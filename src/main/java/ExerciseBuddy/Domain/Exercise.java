@@ -1,18 +1,27 @@
 package ExerciseBuddy.Domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Exercise {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
 	private String name;
 	private String type;
-	private Integer duration;
+	private String duration;
 	
-	Exercise(){
+	public Exercise(){
 		
 	}
 	
-	Exercise (long id,String name,String type,Integer duration ){
-		this.id=id;
+	public Exercise (String name,String type,String duration ){
+		super();
 		this.name= name;
 		this.type= type;
 		this.duration=duration;
@@ -42,11 +51,11 @@ public class Exercise {
 		this.type = type;
 	}
 
-	public Integer getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Integer duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 	
