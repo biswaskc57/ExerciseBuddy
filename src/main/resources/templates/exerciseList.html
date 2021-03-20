@@ -1,21 +1,33 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
 <head>
 <title>exercise buddy</title>
 <meta http-equiv="Content-Type" content="text/html;
 charset=UTF-8" />
 </head>
 <body>
+<div class="container">
 <h2>List of exercises:</h2>
-<h3>Just a test</h3>
-<h4>another test</h4>
-<table>
+
+<table class="table table-striped">
+<tr>
+<th>Name </th>
+<th>Type </th>
+<th>Category</th>
+<th>Sets</th>
+</th>
+</tr>
 	<tr th:each="exercise : ${exercises}">
-<td th:text="${exercise.id}">1</td>
-<td><a href="#" th:text="${exercise.name}">Title ...</a></td>
-<td th:text="${exercise.type}">Text ...</td>
-<td th:text="${exercise.duration}">Text ...</td>
+
+<td><a href="#" th:text="${exercise.name}"></a></td>
+<td th:text="${exercise.type}"></td>
+<td th:text="${exercise.category.name}"></td>
+<td th:text="${exercise.sets}"></td>
 </tr>
 </table>
+<a href="/add" class="btn btn-success">Add Exercise</a>
+</div>
 </body>
 </html>

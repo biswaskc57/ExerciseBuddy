@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Exercise {
@@ -14,17 +16,31 @@ public class Exercise {
 	
 	private String name;
 	private String type;
-	private String duration;
+	private String sets;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "categoryId")
+	private Category category;
 	
 	public Exercise(){
 		
 	}
 	
-	public Exercise (String name,String type,String duration ){
+	public Exercise (String name,String type,String sets, Category category ){
 		super();
 		this.name= name;
 		this.type= type;
-		this.duration=duration;
+		this.sets=sets;
+		this.category=category;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public long getId() {
@@ -51,12 +67,12 @@ public class Exercise {
 		this.type = type;
 	}
 
-	public String getDuration() {
-		return duration;
+	public String getSets() {
+		return sets;
 	}
 
-	public void setDuration(String duration) {
-		this.duration = duration;
+	public void setSets(String sets) {
+		this.sets = sets;
 	}
 	
 	
