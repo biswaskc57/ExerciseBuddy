@@ -27,7 +27,7 @@ public class Category {
 		}
 
 		public Category(String name) {
-			super();
+			super();   
 			this.name = name;
 			
 		}

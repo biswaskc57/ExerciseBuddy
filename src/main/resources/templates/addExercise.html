@@ -23,8 +23,14 @@
 					<input type="text" id="type" th:field="*{type}" class="form-control" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 			
-				<label for="catlist">Duration:</label>
-				<input type="text" id="duration" th:field="*{duration}" class="form-control" />
+				<label for="Date">Date:</label>
+			<input type="date" id="date" th:value="${#dates.format(dateDebut, 'yyyy-MM-dd')}" th:field="*{reservedTime}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+					
+					
+					
+					<label for="date">Date:</label>
+				<input type="text" id="sets" th:field="*{sets}" class="form-control" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 				
 				<select id="catlist" th:field="*{category}" class="form-control">

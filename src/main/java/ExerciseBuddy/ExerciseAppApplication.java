@@ -1,5 +1,7 @@
 package ExerciseBuddy;
 
+import java.text.SimpleDateFormat;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -29,6 +31,9 @@ public class ExerciseAppApplication {
 		public CommandLineRunner demo(ExerciseRepository eRepository, CategoryRepository cRepository) {
 			return (args) ->{
 				
+				
+				
+				
 				cRepository.save(new Category("Abs"));
 				cRepository.save(new Category("Chest"));
 				cRepository.save(new Category("Shoulder"));
@@ -37,11 +42,11 @@ public class ExerciseAppApplication {
 				
 				
 				
-				
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");		
 			
-		Exercise exercise1 = new Exercise("Crunch abs", "Upperbody","12 sets", cRepository.findByName("Abs").get(0));
+		Exercise exercise1 = new Exercise("Crunch abs", "Upperbody","12 sets", cRepository.findByName("Abs").get(0), format.parse("2021-04-16"));
 		
-		Exercise exercise2 = new Exercise("Legs Press", "Lowerbody","12 sets", cRepository.findByName("Legs").get(0) );
+		Exercise exercise2 = new Exercise("Legs Press", "Lowerbody","12 sets", cRepository.findByName("Legs").get(0), format.parse("2021-05-16") );
 			
 		eRepository.save(exercise1);
 		eRepository.save(exercise2);

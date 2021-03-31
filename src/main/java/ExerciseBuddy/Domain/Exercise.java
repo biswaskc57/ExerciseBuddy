@@ -1,5 +1,11 @@
 package ExerciseBuddy.Domain;
 
+
+
+
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,12 +13,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Exercise {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@DateTimeFormat(pattern= "yyyy-MM-dd")
+	private Date reservedTime;
 	
 	private String name;
 	private String type;
@@ -27,12 +38,21 @@ public class Exercise {
 		
 	}
 	
-	public Exercise (String name,String type,String sets, Category category ){
+	public Exercise (String name,String type,String sets, Category category, Date reservedTime){
 		super();
 		this.name= name;
 		this.type= type;
 		this.sets=sets;
 		this.category=category;
+		this.reservedTime= reservedTime;
+	}
+
+	public Date getReservedTime() {
+		return reservedTime;
+	}
+
+	public void setReservedTime(Date reservedTime) {
+		this.reservedTime = reservedTime;
 	}
 
 	public Category getCategory() {
