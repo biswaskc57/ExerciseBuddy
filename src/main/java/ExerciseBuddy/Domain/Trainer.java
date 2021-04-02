@@ -1,24 +1,36 @@
 package ExerciseBuddy.Domain;
 
-public class Trainer {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private String firstName;
-	private String lastName;
+@Entity
+public class Trainer {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	
+	private String name;
+	
 	private String email;
 	private Integer phoneNumber;
 	private String  sSN;
 	private String training;
+
 	private String description;
 	
 	public Trainer() {
 		
 	}
 
-	public Trainer(String firstName, String lastName, String email, Integer phoneNumber, String sSN, String training,
+	public Trainer( String name, String email, Integer phoneNumber, String sSN, String training,
 			String description) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.name = name;
+		
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.sSN = sSN;
@@ -26,21 +38,15 @@ public class Trainer {
 		this.description = description;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	
 
 	public String getEmail() {
 		return email;

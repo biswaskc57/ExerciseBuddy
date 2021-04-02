@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ExerciseBuddy.Domain.CategoryRepository;
 import ExerciseBuddy.Domain.Exercise;
 import ExerciseBuddy.Domain.ExerciseRepository;
+import ExerciseBuddy.Domain.Trainer;
+import ExerciseBuddy.Domain.TrainerRepository;
 
 @Controller
 class exerciseBuddyController {
@@ -26,13 +28,21 @@ class exerciseBuddyController {
 	
 	@Autowired
 	private CategoryRepository cRepository;
+	
+	@Autowired
+	private TrainerRepository trRepository;
 
-	@RequestMapping(value = {"/", "/exerciseList"}, method = RequestMethod.GET)
-	public String hello(@ModelAttribute Exercise exercise, Model model) {
+	@RequestMapping(value = { "/exerciseList"}, method = RequestMethod.GET)
+	public String exerciseList(@ModelAttribute Exercise exercise, Model model) {
 		model.addAttribute("exercises", eRepository.findAll());
 		return "exerciseList";
 	}
 	
+	@RequestMapping(value = {"/", "/trainerList"}, method = RequestMethod.GET)
+	public String trainerList(@ModelAttribute Trainer trainer, Model model) {
+		model.addAttribute("trainers", trRepository.findAll());
+		return "trainerList";
+	}
 	
 	@RequestMapping (value = "/add", method = RequestMethod.GET)
 	public String addExercise(Model model){
