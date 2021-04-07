@@ -6,48 +6,105 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Training {
 
+	private static final Long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	private Date date;
-	private int durationInMins;
-	private String activity;
-	private String customer;
+	private String startingTime;
+	private String endingTime;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "category_id")
+	private Category category;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "trainer_id")
+	private Trainer trainer;
+	
+	
+	
+	public Training () {}
+	
+	public Training( Date date, String startingTime, String endingTime, Category category, Trainer trainer) {
+		super();
+		this.date = date;
+		this.startingTime = startingTime;
+		this.endingTime = endingTime;
+		this.category = category;
+		this.trainer = trainer;
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	
+	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getDurationInMins() {
-		return durationInMins;
+
+	public String getStartingTime() {
+		return startingTime;
 	}
-	public void setDurationInMins(int durationInMins) {
-		this.durationInMins = durationInMins;
+
+	public void setStartingTime(String startingTime) {
+		this.startingTime = startingTime;
 	}
-	public String getActivity() {
-		return activity;
+
+	public String getEndingTime() {
+		return endingTime;
 	}
-	public void setActivity(String activity) {
-		this.activity = activity;
+
+	public void setEndingTime(String endingTime) {
+		this.endingTime = endingTime;
 	}
-	public String getCustomer() {
-		return customer;
+
+	public Category getCategory() {
+		return category;
 	}
-	public void setCustomer(String customer) {
-		this.customer = customer;
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Trainer getTrainer() {
+		return trainer;
+	}
+
+	public void setTrainer(Trainer trainer) {
+		this.trainer = trainer;
 	}
 	
 	
 	
-}
+	
+
+	}
+	
+	
+	
+

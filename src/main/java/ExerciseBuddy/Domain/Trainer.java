@@ -1,9 +1,13 @@
 package ExerciseBuddy.Domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Trainer {
@@ -22,6 +26,11 @@ public class Trainer {
 
 	private String description;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
+	private List <Training> trainings;
+	
+	
+
 	public Trainer() {
 		
 	}
@@ -38,6 +47,13 @@ public class Trainer {
 		this.description = description;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	} 
 	public String getName() {
 		return name;
 	}
@@ -86,6 +102,14 @@ public class Trainer {
 
 	public void setDescriptiom(String descriptiom) {
 		this.description = descriptiom;
+	}
+
+	public List <Training> getTrainings() {
+		return trainings;
+	}
+
+	public void setTrainings(List <Training> trainings) {
+		this.trainings = trainings;
 	}
 	
 	

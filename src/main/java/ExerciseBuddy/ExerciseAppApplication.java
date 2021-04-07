@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 import ExerciseBuddy.Domain.Category;
 import ExerciseBuddy.Domain.CategoryRepository;
-import ExerciseBuddy.Domain.Exercise;
-import ExerciseBuddy.Domain.ExerciseRepository;
+
+
 import ExerciseBuddy.Domain.Trainer;
 import ExerciseBuddy.Domain.TrainerRepository;
 
@@ -31,7 +31,7 @@ public class ExerciseAppApplication {
 		
 	}
 		@Bean
-		public CommandLineRunner demo(ExerciseRepository eRepository, CategoryRepository cRepository, TrainerRepository trRepository) {
+		public CommandLineRunner demo( CategoryRepository cRepository, TrainerRepository trRepository) {
 			return (args) ->{
 				
 				
@@ -45,14 +45,9 @@ public class ExerciseAppApplication {
 				
 				
 				
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");		
+				
 			
-		Exercise exercise1 = new Exercise("Crunch abs", "Upperbody","12 sets", cRepository.findByName("Abs").get(0), format.parse("2021-04-16"));
-		
-		Exercise exercise2 = new Exercise("Legs Press", "Lowerbody","12 sets", cRepository.findByName("Legs").get(0), format.parse("2021-05-16") );
-			
-		eRepository.save(exercise1);
-		eRepository.save(exercise2);
+	
 		
 		
 		Trainer trainer1 = new Trainer("Biswas KC", "Biswas43gmail.com", 451898090, "122222-323", "Body-building",
@@ -68,8 +63,8 @@ public class ExerciseAppApplication {
 		
 		log.info("fetch all exercises");
 		
-		for (Exercise exercise : eRepository.findAll()) {
-			log.info(exercise.toString());
+		for (Trainer trainer : trRepository.findAll()) {
+			log.info(trainer.toString());
 		}
 		};
 }

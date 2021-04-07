@@ -21,39 +21,40 @@ charset=UTF-8" />
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					
 				</ul>
 			</div>
 		</div>
 	</div>
 
 
-	<h1>List of trainers:</h1>
+	<h2 th:inline="text">[[${trainers.name}]] Schedule</h2>
 
 
 	<table class="table table-striped">
-		<tr>
-
-			<th>Image</th>
-			<th>Name</th>
-			<th>Description</th>
-			<th></th>
-
-		</tr>
-		<tr th:each="trainer : ${trainers}">
+<tr>
+<th>Date </th>
+<th>From </th>
+<th>To</th>
+<th>Category</th>
 
 
+</tr>
+	<tr th:each="training : ${trainers.trainings}">
+	
 
+<td th:text = "${#dates.format(training.date, 'yyyy-MM-dd')}"></td>
 
-			<td><a href="#" th:text="${trainer.name}"></a></td>
-			<td th:text="${trainer.training}"></td>
-
-			<td th:text="${trainer.description}"></td>
-
-			<td><a th:href="@{/schedule/{id}(id=${trainer.id})}" class="btn btn-success">Check schedule</a></td>
-		</tr>
-	</table>
-	<a href="/booktrainer" class="btn btn-success">Book a trainer</a>
+<td th:text="${training.startingTime}"></td>
+<td th:text="${training.endingTime}"></td>
+<td th:text="${training.category.name}"></td>
+</tr>
+</table>
+<a href="/booktrainer" class="btn btn-success">Book a training</a>
 
 </body>
 </html>
+
+
+
+

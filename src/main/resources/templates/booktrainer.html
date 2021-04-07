@@ -8,34 +8,42 @@
 	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-	<h1>Add a exercise:</h1>
+	<h1>Book a trainer:</h1>
 	<div class="container">
 		<div class="col-md-6">
-			<form th:object="${exercise}" th:action="@{save}" action="#"
+			<form th:object="${trainings}" th:action="@{save}" action="#"
 				method="post">
 				
 			
-					<label for="author">Name:</label> 
-					<input type="text" id="name" th:field="*{name}" class="form-control" />
-					<div style="clear: both; display: block; height: 10px;"></div>
-				
-					<label for="isbn">Type: </label> 
-					<input type="text" id="type" th:field="*{type}" class="form-control" />
-					<div style="clear: both; display: block; height: 10px;"></div>
 			
 				<label for="Date">Date:</label>
-			<input type="date" id="date" th:value="${#dates.format(dateDebut, 'yyyy-MM-dd')}" th:field="*{reservedTime}" />
+			<input type="date" id="date" th:value="${#dates.format(dateDebut, 'yyyy-MM-dd')}" th:field="*{date}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 					
 					
 					
-					<label for="date">Date:</label>
-				<input type="text" id="sets" th:field="*{sets}" class="form-control" />
+					<label for="startingTime">Start:</label>
+				<input type="text" id="sets" th:field="*{startingTime}" class="form-control" />
+					<div style="clear: both; display: block; height: 10px;"></div>
+					
+					<label for="endingTime">End:</label>
+				<input type="text" id="sets" th:field="*{endingTime}" class="form-control" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 				
+				
+				<label for="CategoryList">Category:</label>
 				<select id="catlist" th:field="*{category}" class="form-control">
 					<option th:each="category: ${categories}"
 						th:value="${category.categoryId}" th:text="${category.name}">
+					</option>
+				</select>
+				
+				
+				
+				<label for="TrainerList">Trainer:</label>
+				<select id="trainerlist" th:field="*{trainer}" class="form-control">
+					<option th:each="select: ${trainers}"
+						th:value="${select.id}" th:text="${select.name}">
 					</option>
 				</select>
 				
@@ -51,3 +59,7 @@
 
 </body>
 </html>
+				
+				
+				
+				

@@ -20,7 +20,7 @@ public class Category {
 	
 		@JsonIgnore
 		@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-		private List<Exercise> exercises;
+		private List<Training> training;
 		
 		public Category() {
 			
@@ -48,12 +48,12 @@ public class Category {
 			this.name = name;
 		}
 
-		public List<Exercise> getExercises() {
-			return exercises;
+		public List<Training> getTraining() {
+			return training;
 		}
 
-		public void setExercises(List<Exercise> exercises) {
-			this.exercises = exercises;
+		public void setExercises(List<Training> training) {
+			this.training = training;
 		}
 		
 		

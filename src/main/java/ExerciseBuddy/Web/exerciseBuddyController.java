@@ -15,61 +15,64 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import ExerciseBuddy.Domain.CategoryRepository;
-import ExerciseBuddy.Domain.Exercise;
-import ExerciseBuddy.Domain.ExerciseRepository;
+
 import ExerciseBuddy.Domain.Trainer;
 import ExerciseBuddy.Domain.TrainerRepository;
+import ExerciseBuddy.Domain.Training;
+import ExerciseBuddy.Domain.TrainingRepository;
 
 @Controller
 class exerciseBuddyController {
 
-	@Autowired
-	private ExerciseRepository eRepository;
+	
+	
 	
 	@Autowired
 	private CategoryRepository cRepository;
 	
 	@Autowired
 	private TrainerRepository trRepository;
-
-	@RequestMapping(value = { "/exerciseList"}, method = RequestMethod.GET)
-	public String exerciseList(@ModelAttribute Exercise exercise, Model model) {
-		model.addAttribute("exercises", eRepository.findAll());
-		return "exerciseList";
-	}
 	
-	@RequestMapping(value = {"/", "/trainerList"}, method = RequestMethod.GET)
+	@Autowired
+	private TrainingRepository trainingRepository;
+
+	
+	
+	@RequestMapping(value = {"/", "/trainerlist"}, method = RequestMethod.GET)
 	public String trainerList(@ModelAttribute Trainer trainer, Model model) {
 		model.addAttribute("trainers", trRepository.findAll());
-		return "trainerList";
+		return "trainerlist";
 	}
 	
-	@RequestMapping (value = "/add", method = RequestMethod.GET)
-	public String addExercise(Model model){
-		model.addAttribute("exercise", new Exercise());
+	
+
+	@RequestMapping (value = "/booktrainer", method = RequestMethod.GET)
+	public String bbookTutor(Model model){
+		model.addAttribute("trainings", new Training());
 		model.addAttribute("categories", cRepository.findAll());
-			return "addExercise";
+		model.addAttribute("trainers", trRepository.findAll());
+			return "bookTrainer";
 		
 	}
-
+	
 	//Saving a exercise
 	//@RequestMapping(value =  "/save", method = RequestMethod.POST)
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Exercise exercise){
-	eRepository.save(exercise);
-	return "redirect:exerciseList";
+	public String save(Training training){
+	trainingRepository.save(training);
+	return "redirect:trainerlist";
+	
 	}
 	
 	
 	//RESTful service to get all exercises
-		@RequestMapping(value = "/exercises", method = RequestMethod.GET)
-	public @ResponseBody List<Exercise> exerciseListRest() {	
-	    return (List<Exercise>) eRepository.findAll();
-	}    
+			@RequestMapping(value = "/schedule/{id}")
+		public String schedule( @PathVariable("id") Long trainerId, Model model) {	
+				model.addAttribute("trainers", trRepository.findById(trainerId).get());
+		    return "schedule";
+		}    
 
-	// RESTful service to get book by id
-	@RequestMapping(value="/exercise/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Exercise> findExerciseRest(@PathVariable("id") Long exerciseId) {
-		return eRepository.findById(exerciseId);
-	}
+	
+	
+	
 	}
