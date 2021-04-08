@@ -45,7 +45,8 @@ charset=UTF-8" />
 
 
 
-			<td><a href="#" th:text="${trainer.name}"></a></td>
+			<td><a th:href="@{/fileupload/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></td>
+			<td th:text="${trainer.photos}"></td>
 			<td th:text="${trainer.training}"></td>
 
 			<td th:text="${trainer.description}"></td>

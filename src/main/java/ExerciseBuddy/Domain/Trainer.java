@@ -1,12 +1,15 @@
 package ExerciseBuddy.Domain;
 
+import java.beans.Transient;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,6 +20,8 @@ public class Trainer {
 	private Long id;
 
 	
+	
+
 	private String name;
 	
 	private String email;
@@ -24,6 +29,10 @@ public class Trainer {
 	private String  sSN;
 	private String training;
 
+	@Lob
+	@Column(columnDefinition = "MEDIUMBLOB")
+	    private String photos;
+	 
 	private String description;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
@@ -47,6 +56,13 @@ public class Trainer {
 		this.description = description;
 	}
 
+	public String getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(String photos) {
+		this.photos = photos;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -112,5 +128,12 @@ public class Trainer {
 		this.trainings = trainings;
 	}
 	
-	
+	@Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+         
+        return "/trainer-photos/" + id + "/" + photos;
+    }
 }
+	
+

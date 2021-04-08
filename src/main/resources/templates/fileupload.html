@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Book a trainer:</h1>
+	<div class="container">
+		<div class="col-md-6">
+			<form th:object="${trainer}" th:action="@{/save/image}" action="#"
+				method="post"  enctype="multipart/form-data" >
+				
+			
+			 <div>
+     
+    <label>Photos: </label>
+    <input type="file" name="image" accept="image/png, image/jpeg" />
+    
+    
+     
+     <div style="clear: both; display: block; height: 10px;"></div>
+				<input type="submit" class="btn btn-success" value="Save"></input>
+    </div>
+
+
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>
+				
+				
+				
+				

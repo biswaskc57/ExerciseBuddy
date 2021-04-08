@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ExerciseBuddy.Domain.Category;
-import ExerciseBuddy.Domain.CategoryRepository;
-
 import ExerciseBuddy.Domain.Trainer;
-import ExerciseBuddy.Domain.TrainerRepository;
 import ExerciseBuddy.Domain.Training;
-import ExerciseBuddy.Domain.TrainingRepository;
+import ExerciseBuddy.Repo.CategoryRepository;
+import ExerciseBuddy.Repo.TrainerRepository;
+import ExerciseBuddy.Repo.TrainingRepository;
 
 @Controller
 class exerciseBuddyController {
@@ -31,6 +30,17 @@ class exerciseBuddyController {
 
 	@Autowired
 	private TrainingRepository trainingRepository;
+	
+	
+	
+	
+	
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login (){
+		return "login";
+	}
+	
+	
 
 	// Rest API to find list of trainers
 	@RequestMapping(value = { "/trainers" }, method = RequestMethod.GET)
@@ -137,6 +147,11 @@ class exerciseBuddyController {
 	}
 	
 	
+	@RequestMapping(value = "/fileupload/{id}")
+	public String fileUpload(@PathVariable("id") Long trainerId, Model model) {
+		model.addAttribute("trainers", trRepository.findById(trainerId).get());
+		return "fileupload";
+	}
 	
 	
 
