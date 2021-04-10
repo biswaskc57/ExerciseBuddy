@@ -1,4 +1,4 @@
-package ExerciseBuddy.Web;
+/*package ExerciseBuddy.Web;
 
 
 	
@@ -57,6 +57,6 @@ import ExerciseBuddy.Repo.UserRepository;
 		    	}
 		    	return "redirect:/login";    	
 		    }    
-		}
+		}*/
 
 

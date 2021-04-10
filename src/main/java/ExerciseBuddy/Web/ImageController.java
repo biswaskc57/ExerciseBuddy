@@ -1,9 +1,11 @@
-package ExerciseBuddy.Web;
+/*package ExerciseBuddy.Web;
 
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,11 +25,15 @@ public class ImageController {
 	    private TrainerRepository repo;
 	     
 	    @PostMapping("/save/image")
-	    public RedirectView saveUser(Trainer trainer,
+	    public RedirectView saveUser(Trainer trainer, @ PathVariable("id") Long trainerId, Model model,
 	            @RequestParam("image") MultipartFile multipartFile) throws IOException {
 	         
 	        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-	        trainer.setPhotos(fileName);
+	        
+	        
+	        model.addAttribute("book", repo.findById(trainerId));
+	        repo.findById(trainerId).get().setPhotos(fileName);
+	        
 	         
 	        Trainer savedTrainer = repo.save(trainer);
 	 
@@ -37,6 +43,6 @@ public class ImageController {
 	         
 	        return new RedirectView("/trainerlist", true);
 	    }
-	}
+	}*/
 	
 

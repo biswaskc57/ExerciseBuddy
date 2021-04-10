@@ -38,7 +38,16 @@ public class Trainer {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
 	private List <Training> trainings;
 	
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
+	private List <Product> products;
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 
 	public Trainer() {
 		

@@ -1,4 +1,4 @@
-package ExerciseBuddy.Services;
+/* package ExerciseBuddy.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -15,7 +15,7 @@ import ExerciseBuddy.Domain.User;
 /**
 	 * This class is used by spring security to authenticate and authorize user
 	 **/
-	@Service
+	/*@Service
 	public class UserDetailServiceImpl implements UserDetailsService  {
 		private final UserRepository repository;
 
@@ -32,4 +32,4 @@ import ExerciseBuddy.Domain.User;
 	        		AuthorityUtils.createAuthorityList(currUser.getRole()));
 	        return user;
 	    }   
-	}
+	}*/
