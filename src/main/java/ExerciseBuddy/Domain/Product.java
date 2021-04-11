@@ -1,6 +1,6 @@
 package ExerciseBuddy.Domain;
 
-import java.beans.Transient;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,17 +28,28 @@ public class Product {
 	
 	
 	
+
+
+	@Transient
+	private MultipartFile [] image;
 	
 	
+	public MultipartFile getImage() {
+		return image;
+	}
+	
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+
 	private String Name;
 	private String Description;
 	private boolean isAvailable;
 	private int price;
 	
 	
-	@Lob
-	@Column(columnDefinition = "MEDIUMBLOB")
-	private String image;
+	
 	
 	
 	@ManyToOne
@@ -43,15 +57,7 @@ public class Product {
 	@JoinColumn(name = "trainer_id")
 	private Trainer trainer;
 	
-	public String getImage() {
-		return image;
-	}
-
-
-
-	public void setImage(String image) {
-		this.image = image;
-	}
+	
 
 
 
@@ -134,12 +140,7 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	 @Transient
-	    public String getPhotosImagePath() {
-	        if (image== null || id == null) return null;
-	         
-	        return "/user-photos/" + id + "/" + image;
-	    }
+	 
 	
 	
 	

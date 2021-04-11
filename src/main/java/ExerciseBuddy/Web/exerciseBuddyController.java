@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ExerciseBuddy.Domain.Category;
+import ExerciseBuddy.Domain.Product;
 import ExerciseBuddy.Domain.Trainer;
 import ExerciseBuddy.Domain.Training;
 import ExerciseBuddy.Repo.CategoryRepository;
+import ExerciseBuddy.Repo.ProductRepo;
 import ExerciseBuddy.Repo.TrainerRepository;
 import ExerciseBuddy.Repo.TrainingRepository;
 
@@ -31,7 +33,8 @@ class exerciseBuddyController {
 	@Autowired
 	private TrainingRepository trainingRepository;
 	
-	
+	@Autowired
+	private ProductRepo productRepository;
 	
 	
 	
@@ -147,12 +150,18 @@ class exerciseBuddyController {
 	}
 	
 	
-	@RequestMapping(value = "/fileupload/{id}")
+	/*@RequestMapping(value = "/fileupload/{id}")
 	public String fileUpload(@PathVariable("id") Long trainerId, Model model) {
 		model.addAttribute("trainers", trRepository.findById(trainerId).get());
 		return "fileupload";
+	}*/
+	
+	@RequestMapping(value = "/fileupload", method = RequestMethod.GET)
+	public String save(Product product) {
+		productRepository.save(product);
+		return "fileupload";
+
 	}
-	
-	
+
 
 }

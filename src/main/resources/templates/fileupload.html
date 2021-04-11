@@ -7,7 +7,7 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
 	th:href="@{css/bootstrap.min.css}" />
 </head>
-s
+
 <body>
 	<h1>Book a trainer:</h1>
 	<div class="container">
@@ -18,8 +18,18 @@ s
 			
 			 <div>
     <p>
-    <label>Photos: </label>
-    <input type="file" name="image" accept="image/png, image/jpeg" />
+    
+    
+    
+    
+    <label for="title">Name:</label> 
+					<input type="text" id="Name"th:field="*{Name}" class="form-control"/>
+					<div style="clear: both; display: block; height: 10px;"></div>
+    
+    <label for="image">Photo:</label> 
+					<input type="text" id="image" th:field="*{image}" class="form-control" accept="image/png, image/jpeg, image/jpg" />
+					<div style="clear: both; display: block; height: 10px;"></div>
+				
     
     </p>
     <p>

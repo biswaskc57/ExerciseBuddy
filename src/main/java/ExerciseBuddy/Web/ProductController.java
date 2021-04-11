@@ -1,6 +1,7 @@
 package ExerciseBuddy.Web;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
+
+
+
 
 import ExerciseBuddy.Domain.Product;
 import ExerciseBuddy.Domain.Training;
@@ -38,7 +42,7 @@ public class ProductController {
             @RequestParam("image") MultipartFile multipartFile) throws IOException {
          
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setImage(fileName);
+        product.setImage(Base64.getEncoder().encodeToString(multipartFile.getBytes()));
          
         Product savedProduct = repo.save(product);
  
@@ -49,6 +53,14 @@ public class ProductController {
         return new RedirectView("/productlist", true);
     }
 	
+    @RequestMapping(value =  "/addimage")
+    public String addProduct(Model model) {
+
+    	model.addAttribute("product", new Product());
+    	
+    	return "fileUpload";
+    }
+
 	
 	
 	
