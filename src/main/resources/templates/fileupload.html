@@ -17,7 +17,7 @@
 				
 			
 			 <div>
-    <p>
+   
     
     
     
@@ -26,12 +26,13 @@
 					<input type="text" id="Name"th:field="*{Name}" class="form-control"/>
 					<div style="clear: both; display: block; height: 10px;"></div>
     
+    
     <label for="image">Photo:</label> 
-					<input type="text" id="image" th:field="*{image}" class="form-control" accept="image/png, image/jpeg, image/jpg" />
+					<input type="file" id="image" name="image" th:field="*{photos}"  accept="image/png, image/jpeg"  class="form-control"  />
 					<div style="clear: both; display: block; height: 10px;"></div>
 				
     
-    </p>
+   
     <p>
     <img id = "thumbnail" alt= "Image preview" />
     </p>

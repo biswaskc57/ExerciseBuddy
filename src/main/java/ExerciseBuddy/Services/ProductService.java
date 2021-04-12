@@ -1,4 +1,4 @@
-package ExerciseBuddy.Services;
+/*package ExerciseBuddy.Services;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -65,4 +65,4 @@ public class ProductService {
     	p.setPrice(price);
     	productRepo.save(p);
     }
-}
+}*/

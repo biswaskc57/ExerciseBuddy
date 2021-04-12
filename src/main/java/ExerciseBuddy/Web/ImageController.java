@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.util.StringUtils;
 
 import ExerciseBuddy.Domain.Trainer;
+import ExerciseBuddy.Repo.ProductRepo;
 import ExerciseBuddy.Repo.TrainerRepository;
 import ExerciseBuddy.Services.FileUploadUtil;
 
@@ -23,6 +24,7 @@ public class ImageController {
 
 	 @Autowired
 	    private TrainerRepository repo;
+	 private ProductRepo productRepo;
 	     
 	    @PostMapping("/save/image")
 	    public RedirectView saveUser(Trainer trainer, @ PathVariable("id") Long trainerId, Model model,
@@ -31,18 +33,18 @@ public class ImageController {
 	        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	        
 	        
-	        model.addAttribute("book", repo.findById(trainerId));
+	        model.addAttribute("product", productRepo.findById(productId));
 	        repo.findById(trainerId).get().setPhotos(fileName);
 	        
 	         
 	        Trainer savedTrainer = repo.save(trainer);
 	 
-	        String uploadDir = "trainer-photos/" + savedTrainer.getId();
+	        String uploadDir = "product-photos/" + savedTrainer.getId();
 	 
 	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	         
-	        return new RedirectView("/trainerlist", true);
+	        return new RedirectView("/product", true);
 	    }
-	}*/
+	}
 	
-
+*/

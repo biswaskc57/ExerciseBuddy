@@ -24,7 +24,7 @@ import ExerciseBuddy.Domain.Product;
 import ExerciseBuddy.Domain.Training;
 import ExerciseBuddy.Repo.ProductRepo;
 import ExerciseBuddy.Services.FileUploadUtil;
-import ExerciseBuddy.Services.ProductService;
+
 
 
 
@@ -42,7 +42,7 @@ public class ProductController {
             @RequestParam("image") MultipartFile multipartFile) throws IOException {
          
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setImage(Base64.getEncoder().encodeToString(multipartFile.getBytes()));
+        product.setPhotos(fileName);
          
         Product savedProduct = repo.save(product);
  
@@ -53,6 +53,10 @@ public class ProductController {
         return new RedirectView("/productlist", true);
     }
 	
+    
+    
+    
+    
     @RequestMapping(value =  "/addimage")
     public String addProduct(Model model) {
 

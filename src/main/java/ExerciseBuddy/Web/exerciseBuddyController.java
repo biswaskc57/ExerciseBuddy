@@ -146,7 +146,7 @@ class exerciseBuddyController {
 	@RequestMapping(value = "/schedule/{id}")
 	public String schedule(@PathVariable("id") Long trainerId, Model model) {
 		model.addAttribute("trainers", trRepository.findById(trainerId).get());
-		return "schedule";
+		return "schedulelist";
 	}
 	
 	

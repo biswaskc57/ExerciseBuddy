@@ -21,27 +21,24 @@ public class Product {
 
 	
 	
-	private static final Long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	
 	
+	@Column(columnDefinition = "MEDIUMBLOB")
+	    private String photos;
+	  
+	  
+
+	
 
 
-	@Transient
-	private MultipartFile [] image;
-	
-	
-	public MultipartFile getImage() {
-		return image;
-	}
-	
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
 
+
+	
 
 	private String Name;
 	private String Description;
@@ -141,7 +138,23 @@ public class Product {
 		this.price = price;
 	}
 	 
+	public String getPhotos() {
+		return photos;
+	}
+
+
+
+	public void setPhotos(String photos) {
+		this.photos = photos;
+	}
+
 	
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (photos == null || id == null) return null;
+	         
+	        return "/user-photos/" + id + "/" + photos;
+	    }
+	}
 	
-	
-}
+
