@@ -31,10 +31,31 @@ import ExerciseBuddy.Services.FileUploadUtil;
 @Controller
 public class ProductController {
 	
+	 @Autowired
+	    private ProductRepo repo;
+	     
+	    @PostMapping("/save/image")
+	    public RedirectView saveUser(Product product,
+	            @RequestParam("image") MultipartFile multipartFile) throws IOException {
+	         
+	        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+	        product.setPhotos(fileName);
+	         
+	        Product savedTrainer = repo.save(product);
+	        System.out.println(savedTrainer.getName());
+	        System.out.println(product.getName());
+	        String uploadDir = "trainer-photos/" + savedTrainer.getId();
+	 
+	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+	         
+	        return new RedirectView("/trainerlist", true);
+	    }
+	
+}
 	
 	
 	
-	@Autowired
+	/*@Autowired
     private ProductRepo repo;
      
     @PostMapping("/save/image")
@@ -42,7 +63,10 @@ public class ProductController {
             @RequestParam("image") MultipartFile multipartFile) throws IOException {
          
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setPhotos(fileName);
+        
+        byte[] contents = fileName.getBytes();
+        
+        //product.setPhotos(fileName);
          
         Product savedProduct = repo.save(product);
  

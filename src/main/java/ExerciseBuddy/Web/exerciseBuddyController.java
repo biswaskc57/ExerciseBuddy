@@ -105,6 +105,12 @@ class exerciseBuddyController {
 
 	
 	
+	@RequestMapping(value = {  "/productlist" }, method = RequestMethod.GET)
+	public String productList( Model model) {
+		model.addAttribute("products", productRepository.findAll());
+		return "productlist";
+	}
+	
 	/**
 	 * Trainer booking form-page
 	 * @param model

@@ -28,9 +28,9 @@ public class Product {
 	
 	
 	
+	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
 	    private String photos;
-	  
 	  
 
 	
@@ -46,7 +46,7 @@ public class Product {
 	private int price;
 	
 	
-	
+
 	
 	
 	@ManyToOne
@@ -137,7 +137,9 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	 
+
+
+
 	public String getPhotos() {
 		return photos;
 	}
@@ -148,13 +150,26 @@ public class Product {
 		this.photos = photos;
 	}
 
+
+
 	
-	 @Transient
-	    public String getPhotosImagePath() {
-	        if (photos == null || id == null) return null;
-	         
-	        return "/user-photos/" + id + "/" + photos;
-	    }
+	 
+	@Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+         
+        return "/product-photos/"  + photos;
+    }
+
+
+
+	
+
+	
+	 
+
+
+	
 	}
 	
 
