@@ -34,7 +34,7 @@ charset=UTF-8" />
 	<table class="table table-striped">
 		<tr>
 
-			
+			<th>Image</th>
 			<th>Name</th>
 			<th>Description</th>
 			<th></th>
@@ -46,11 +46,11 @@ charset=UTF-8" />
 
 
 			<td><a th:href="@{/fileupload}" th:text="${trainer.name}"></a></td>
-			
+			<td th:text="${trainer.photos}"></td>
 			<td th:text="${trainer.training}"></td>
 
 			<td th:text="${trainer.description}"></td>
-<td th:text="${trainer.photos}"></td>
+
 			<td><a th:href="@{/schedule/{id}(id=${trainer.id})}" class="btn btn-success">Check schedule</a></td>
 		</tr>
 	</table>
