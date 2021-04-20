@@ -158,18 +158,7 @@ public class Product {
     public String getPhotosImagePath() {
         if (photos == null || id == null) return null;
          
-        return "/product-photos/"  + photos;
+        return "/" + getId() + "/" + photos;
     }
-
-
-
 	
-
-	
-	 
-
-
-	
-	}
-	
-
+}

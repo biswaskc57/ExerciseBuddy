@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 
 import ExerciseBuddy.Domain.Product;
-import ExerciseBuddy.Domain.Training;
+
 import ExerciseBuddy.Repo.ProductRepo;
 import ExerciseBuddy.Services.FileUploadUtil;
 
@@ -36,7 +36,7 @@ public class ProductController {
 	     
 	    @PostMapping("/save/image")
 	    public RedirectView saveUser(Product product,
-	            @RequestParam("image") MultipartFile multipartFile) throws IOException {
+	            @RequestParam("picture") MultipartFile multipartFile) throws IOException {
 	         
 	        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	        product.setPhotos(fileName);
@@ -44,16 +44,16 @@ public class ProductController {
 	        Product savedTrainer = repo.save(product);
 	        System.out.println(savedTrainer.getName());
 	        System.out.println(product.getName());
-	        String uploadDir = "trainer-photos/" + savedTrainer.getId();
+	        String uploadDir = "src/main/resources/static/" + savedTrainer.getId();
+	       
+	        System.out.println(uploadDir);
 	 
 	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	         
-	        return new RedirectView("/trainerlist", true);
+	        return new RedirectView("/productlist", true);
 	    }
 	
 }
-	
-	
 	
 	/*@Autowired
     private ProductRepo repo;

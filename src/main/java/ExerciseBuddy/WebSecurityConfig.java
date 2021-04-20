@@ -1,3 +1,4 @@
+package ExerciseBuddy;
 /*package ExerciseBuddy.Web;
 
 
