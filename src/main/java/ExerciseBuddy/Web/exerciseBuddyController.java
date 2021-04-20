@@ -162,9 +162,8 @@ class exerciseBuddyController {
 		return "fileupload";
 	}*/
 	
-	@RequestMapping(value = "/fileupload", method = RequestMethod.GET)
+	@RequestMapping(value = "/fileuploader", method = RequestMethod.GET)
 	public String save(Product product) {
-		productRepository.save(product);
 		return "fileupload";
 
 	}

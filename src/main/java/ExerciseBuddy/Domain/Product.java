@@ -40,8 +40,8 @@ public class Product {
 
 	
 
-	private String Name;
-	private String Description;
+	private String name;
+	private String description;
 	private boolean isAvailable;
 	private int price;
 	
@@ -66,8 +66,8 @@ public class Product {
 
 	public Product( String name, String description, boolean isAvailable, int price,Trainer trainer ) {
 		super();
-		Name = name;
-		Description = description;
+		this.name = name;
+		this.description = description;
 		this.isAvailable = isAvailable;
 		this.price = price;
 		this.trainer = trainer;
@@ -100,22 +100,22 @@ public class Product {
 
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 
 

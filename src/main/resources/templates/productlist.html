@@ -34,9 +34,9 @@ charset=UTF-8" />
 	<table class="table table-striped">
 <tr>
 <th>Name </th>
-<th>From </th>
-<th>To</th>
-<th>Category</th>
+<th>Image </th>
+
+<th>Desc</th>
 
 
 </tr>
@@ -44,13 +44,13 @@ charset=UTF-8" />
 	
 
 
-<td th:text="${product.Name}"></td>
+<td th:text="${product.name}"></td>
  <td><img class="img-responsive" width="100" th:src="@{${product.getPhotosImagePath()}}"  /></td>
-
+<td th:text="${product.description}"></td>
 </tr>
 </table>
 
-<a href="/booktrainer" class="btn btn-success">Book a training</a>
+<a href="/fileuploader" class="btn btn-success">Add more product</a>
 </div>
 </body>
 </html>
