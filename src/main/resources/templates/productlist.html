@@ -1,14 +1,14 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}"/>
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>exercise buddy</title>
-<meta http-equiv="Content-Type" content="text/html;
-charset=UTF-8" />
+<title>Server Programmings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
 
+<h1>Product list:</h1>
 	<!-- ============================================================================ -->
 	<!-- This content is only used for static prototyping purposes (natural templates)-->
 	<!-- and is therefore entirely optional, as this markup fragment will be included -->
@@ -28,8 +28,8 @@ charset=UTF-8" />
 	</div>
 
 
-	
-<div>
+	<h2 th:inline="text">[[${trainers.name}]] 's Products</h2>
+
 
 	<table class="table table-striped">
 <tr>
@@ -40,7 +40,7 @@ charset=UTF-8" />
 
 
 </tr>
-	<tr th:each="product : ${products}">
+	<tr th:each="product : ${trainers.products}">
 	
 
 
@@ -51,7 +51,7 @@ charset=UTF-8" />
 </table>
 
 <a href="/fileuploader" class="btn btn-success">Add more product</a>
-</div>
+
 </body>
 </html>
 

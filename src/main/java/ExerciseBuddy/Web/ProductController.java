@@ -53,8 +53,9 @@ public class ProductController {
 	        System.out.println(uploadDir);
 	 
 	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-	         
-	        return new RedirectView("/productlist", true);
+	        System.out.println("hehehehehe");
+	        return new RedirectView("/trainerlist", true);
+	       
 	    }
 	
 }

@@ -35,7 +35,16 @@
 					<input type="text" id="description "th:field="*{description}" class="form-control"/>
 					<div style="clear: both; display: block; height: 10px;"></div>		
     
-   
+    
+    
+    
+    
+   <label for="TrainerList">Trainer:</label>
+				<select id="trainerlist" th:field="*{trainer}" class="form-control">
+					<option th:each="select: ${trainers}"
+						th:value="${select.id}" th:text="${select.name}">
+					</option>
+				</select>
     <p>
     <img id = "thumbnail" alt= "Image preview" />
     </p>

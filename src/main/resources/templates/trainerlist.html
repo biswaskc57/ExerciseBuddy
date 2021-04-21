@@ -9,25 +9,28 @@ charset=UTF-8" />
 </head>
 <body>
 
-	<!-- ============================================================================ -->
-	<!-- This content is only used for static prototyping purposes (natural templates)-->
-	<!-- and is therefore entirely optional, as this markup fragment will be included -->
-	<!-- from "fragments/header.html" at runtime.                                     -->
-	<!-- ============================================================================ -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#"></a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 
 
+      <!-- ============================================================================ -->
+      <!-- This content is only used for static prototyping purposes (natural templates)-->
+      <!-- and is therefore entirely optional, as this markup fragment will be included -->
+      <!-- from "fragments/header.html" at runtime.                                     -->
+      <!-- ============================================================================ -->
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Static header</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    
+   
 	<h1>List of trainers:</h1>
 
 
@@ -45,7 +48,7 @@ charset=UTF-8" />
 
 
 
-			<td><a th:href="@{/fileuploader}" th:text="${trainer.name}"></a></td>
+			<td><a th:href="@{/productlist/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></td>
 			
 			<td th:text="${trainer.training}"></td>
 
@@ -56,5 +59,6 @@ charset=UTF-8" />
 	</table>
 	<a href="/booktrainer" class="btn btn-success">Book a trainer</a>
 
+ 
 </body>
 </html>

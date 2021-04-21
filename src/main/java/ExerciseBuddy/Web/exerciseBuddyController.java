@@ -33,15 +33,14 @@ class exerciseBuddyController {
 	@Autowired
 	private TrainingRepository trainingRepository;
 	
-	@Autowired
-	private ProductRepo productRepository;
 	
 	
 	
-	/*@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login (){
 		return "login";
-	}*/
+	}
 	
 	
 
@@ -105,11 +104,7 @@ class exerciseBuddyController {
 
 	
 	
-	@RequestMapping(value = {  "/productlist" }, method = RequestMethod.GET)
-	public String productList( Model model) {
-		model.addAttribute("products", productRepository.findAll());
-		return "productlist";
-	}
+	
 	
 	/**
 	 * Trainer booking form-page
@@ -163,9 +158,16 @@ class exerciseBuddyController {
 	}*/
 	
 	@RequestMapping(value = "/fileuploader", method = RequestMethod.GET)
-	public String save(Product product) {
+	public String save(Product product, Model model) {
+		model.addAttribute("trainers", trRepository.findAll());
 		return "fileupload";
 
+	}
+	
+	@RequestMapping(value =  "/productlist/{id}" )
+	public String productList(@PathVariable("id") Long trainerId, Model model) {
+		model.addAttribute("trainers", trRepository.findById(trainerId).get());
+		return "productlist";
 	}
 
 
