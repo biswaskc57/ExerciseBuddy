@@ -17,11 +17,11 @@ import ExerciseBuddy.Domain.Product;
 import ExerciseBuddy.Domain.Trainer;
 import ExerciseBuddy.Domain.Training;
 import ExerciseBuddy.Repo.CategoryRepository;
-import ExerciseBuddy.Repo.ProductRepo;
 import ExerciseBuddy.Repo.TrainerRepository;
 import ExerciseBuddy.Repo.TrainingRepository;
 
 @Controller
+public
 class exerciseBuddyController {
 
 	@Autowired
