@@ -1,6 +1,6 @@
 package ExerciseBuddy.Domain;
 
-
+import javax.persistence.Table;
 
 	import javax.persistence.Column;
 	import javax.persistence.Entity;
@@ -10,7 +10,7 @@ package ExerciseBuddy.Domain;
 	import javax.persistence.Table;
 
 	@Entity
-	//@Table(name = "username", schema = "public")
+	@Table(name = "username", schema = "public")
 	public class User {
 
 	    @Id
