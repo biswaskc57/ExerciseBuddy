@@ -29,8 +29,7 @@ public class Trainer {
 	private String  sSN;
 	private String training;
 
-	@Lob
-	@Column(columnDefinition = "MEDIUMBLOB")
+	
 	    private String photos;
 	 
 	private String description;
