@@ -116,7 +116,7 @@ class exerciseBuddyController {
 		model.addAttribute("trainings", new Training());
 		model.addAttribute("categories", cRepository.findAll());
 		model.addAttribute("trainers", trRepository.findAll());
-		return "bookTrainer";
+		return "booktrainer";
 
 	}
 
