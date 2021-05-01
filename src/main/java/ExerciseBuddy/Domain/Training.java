@@ -16,31 +16,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Training {
 
-	private static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@DateTimeFormat(pattern= "yyyy-MM-dd")
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	private String startingTime;
 	private String endingTime;
-	
+
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "trainer_id")
 	private Trainer trainer;
-	
-	
-	
-	public Training () {}
-	
-	public Training( Date date, String startingTime, String endingTime, Category category, Trainer trainer) {
+
+	public Training() {
+	}
+
+	public Training(Date date, String startingTime, String endingTime, Category category, Trainer trainer) {
 		super();
 		this.date = date;
 		this.startingTime = startingTime;
@@ -57,8 +55,7 @@ public class Training {
 		this.id = id;
 	}
 
-	
-	@DateTimeFormat(pattern= "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getDate() {
 		return date;
 	}
@@ -98,13 +95,5 @@ public class Training {
 	public void setTrainer(Trainer trainer) {
 		this.trainer = trainer;
 	}
-	
-	
-	
-	
 
-	}
-	
-	
-	
-
+}

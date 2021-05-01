@@ -1,29 +1,21 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}"/>
+	th:href="@{css/bootstrap.min.css}" />
 <head>
 <title>exercise buddy</title>
 <meta http-equiv="Content-Type" content="text/html;
 charset=UTF-8" />
 </head>
 <body>
-
-
-
-    <div class="col-md-4" style="padding: 20px 0">
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
-			</form>
-		</div>
-   
+	<div class="col-md-4" style="padding: 20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+		</form>
+	</div>
 	<h1>List of trainers:</h1>
-
-
 	<table class="table table-striped">
 		<tr>
-
-			
 			<th>Name</th>
 			<th>Description</th>
 			<th>Experience</th>
@@ -31,21 +23,19 @@ charset=UTF-8" />
 
 		</tr>
 		<tr th:each="trainer : ${trainers}">
+			<td><a th:href="@{/productlist/{id}(id=${trainer.id})}"
+				th:text="${trainer.name}"></a></td>
 
-
-
-
-			<td><a th:href="@{/productlist/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></td>
-			
 			<td th:text="${trainer.training}"></td>
 
 			<td th:text="${trainer.description}"></td>
-<td th:text="${trainer.photos}"></td>
-			<td><a th:href="@{/schedule/{id}(id=${trainer.id})}" class="btn btn-success">Check schedule</a></td>
+			<td th:text="${trainer.photos}"></td>
+			<td><a th:href="@{/schedule/{id}(id=${trainer.id})}"
+				class="btn btn-success">Check schedule</a></td>
 		</tr>
 	</table>
 	<a href="/booktrainer" class="btn btn-success">Book a trainer</a>
 
- 
+
 </body>
 </html>

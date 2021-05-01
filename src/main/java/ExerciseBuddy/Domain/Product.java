@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Product {
 
-	private static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -34,14 +33,14 @@ public class Product {
 
 	}
 
-	public Product( String name, String description, boolean isAvailable, int price, Trainer trainer, String photos) {
+	public Product(String name, String description, boolean isAvailable, int price, Trainer trainer, String photos) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.isAvailable = isAvailable;
 		this.price = price;
 		this.trainer = trainer;
-		this.photos= photos;
+		this.photos = photos;
 	}
 
 	public Long getId() {

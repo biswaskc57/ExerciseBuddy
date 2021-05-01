@@ -4,41 +4,35 @@ import java.beans.Transient;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Trainer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	
-	
-
 	private String name;
-	
+
 	private String email;
 	private Integer phoneNumber;
-	private String  sSN;
+	private String sSN;
 	private String training;
 
-	
-	    private String photos;
-	 
+	private String photos;
+
 	private String description;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
-	private List <Training> trainings;
-	
+	private List<Training> trainings;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
-	private List <Product> products;
+	private List<Product> products;
 
 	public List<Product> getProducts() {
 		return products;
@@ -49,14 +43,13 @@ public class Trainer {
 	}
 
 	public Trainer() {
-		
+
 	}
 
-	public Trainer( String name, String email, Integer phoneNumber, String sSN, String training,
-			String description) {
+	public Trainer(String name, String email, Integer phoneNumber, String sSN, String training, String description) {
 		super();
 		this.name = name;
-		
+
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.sSN = sSN;
@@ -71,13 +64,15 @@ public class Trainer {
 	public void setPhotos(String photos) {
 		this.photos = photos;
 	}
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	} 
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -85,8 +80,6 @@ public class Trainer {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 
 	public String getEmail() {
 		return email;
@@ -128,20 +121,19 @@ public class Trainer {
 		this.description = descriptiom;
 	}
 
-	public List <Training> getTrainings() {
+	public List<Training> getTrainings() {
 		return trainings;
 	}
 
-	public void setTrainings(List <Training> trainings) {
+	public void setTrainings(List<Training> trainings) {
 		this.trainings = trainings;
 	}
-	
-	@Transient
-    public String getPhotosImagePath() {
-        if (photos == null || id == null) return null;
-         
-        return "/trainer-photos/" + id + "/" + photos;
-    }
-}
-	
 
+	@Transient
+	public String getPhotosImagePath() {
+		if (photos == null || id == null)
+			return null;
+
+		return "/trainer-photos/" + id + "/" + photos;
+	}
+}
