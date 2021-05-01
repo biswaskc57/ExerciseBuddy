@@ -34,13 +34,14 @@ public class Product {
 
 	}
 
-	public Product(String name, String description, boolean isAvailable, int price, Trainer trainer) {
+	public Product( String name, String description, boolean isAvailable, int price, Trainer trainer, String photos) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.isAvailable = isAvailable;
 		this.price = price;
 		this.trainer = trainer;
+		this.photos= photos;
 	}
 
 	public Long getId() {

@@ -2,6 +2,9 @@ package ExerciseBuddy;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -13,9 +16,13 @@ import org.springframework.context.annotation.Bean;
 
 import ExerciseBuddy.Domain.Category;
 import ExerciseBuddy.Domain.Trainer;
+import ExerciseBuddy.Domain.Training;
 import ExerciseBuddy.Domain.User;
+import ExerciseBuddy.Domain.Product;
 import ExerciseBuddy.Repo.CategoryRepository;
+import ExerciseBuddy.Repo.ProductRepo;
 import ExerciseBuddy.Repo.TrainerRepository;
+import ExerciseBuddy.Repo.TrainingRepository;
 import ExerciseBuddy.Repo.UserRepository;
 
 
@@ -33,9 +40,11 @@ public class ExerciseAppApplication {
 		
 	}
 		@Bean
-		public CommandLineRunner demo( CategoryRepository cRepository, TrainerRepository trRepository,UserRepository uRepository ) {
+		public CommandLineRunner demo( CategoryRepository cRepository,TrainingRepository trainingRepository,ProductRepo prouductRepository, TrainerRepository trRepository,UserRepository uRepository ) {
 			return (args) ->{
 				
+				
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				
 				
 				
@@ -47,6 +56,7 @@ public class ExerciseAppApplication {
 				
 				
 				
+	
 				
 				
 				//Create users: admin/ admin user/user
@@ -70,6 +80,25 @@ public class ExerciseAppApplication {
 		trRepository.save(trainer1);
 		trRepository.save(trainer2);
 		trRepository.save(trainer3);
+		
+		
+		Product product1 = new Product( "Jump rope", "Helps to do jumping exercise", true, 20,  trainer1, "Jump rope.jpeg" );
+		
+		Product product2 = new Product( "Voimapyora", "Helps to do jabs exercise", true, 30,  trainer1, "Voimapyora.jpeg" );
+		
+		
+		 
+		prouductRepository.save(product1);
+		prouductRepository.save(product2);
+		
+		
+		
+		trainingRepository.save(new Training( format.parse("2021-06-10"), "12", "13", cRepository.findByName("Abs").get(0), trRepository.findByName("Biswas KC").get(0)));
+		trainingRepository.save(new Training( format.parse("2021-06-11"), "12", "16", cRepository.findByName("Abs").get(0), trRepository.findByName("Biswas KC").get(0)));
+		trainingRepository.save(new Training( format.parse("2021-06-12"), "11", "13", cRepository.findByName("Abs").get(0), trRepository.findByName("Danny shepherd").get(0)));
+		trainingRepository.save(new Training( format.parse("2021-06-13"), "10", "13", cRepository.findByName("Abs").get(0), trRepository.findByName("Danny shepherd").get(0)));
+		trainingRepository.save(new Training( format.parse("2021-06-14"), "10", "12", cRepository.findByName("Abs").get(0), trRepository.findByName("lung chong").get(0)));
+		trainingRepository.save(new Training( format.parse("2021-06-15"), "8", "10", cRepository.findByName("Abs").get(0), trRepository.findByName("lung chong").get(0)));
 		
 		log.info("fetch all exercises");
 		
